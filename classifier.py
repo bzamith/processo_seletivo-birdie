@@ -16,14 +16,13 @@ class Classifier:
 		if pre_process:
 			self.data_p,self.positive_ex,self.negative_ex = self.process_dataset()
 		#data_t is data_p after being transformeed (count vect and tf_transformer)
-		self.data_t,self.data_train,self.data_test = self.split_dataset()
+		self.data_t,self.data_train,self.data_test = self.splidata_pset()
 		#prediction with KMeans
 		self.clf = self.clf_KMeans()
 		self.prediction = self.clf.predict(self.data_t)
 		self.prediction = self.convert_prediction()
 		self.write_prediction(save_name,pre_process)
-	#read_dataset
-	def read_dataset(self,file_name):
+	def read_dataset(self,file_name,test_proportion=0.2):
 		with open(file_name, 'r') as dataset_file:
 			data = dataset_file.readlines()
 			data = [item.strip().split('\t') for item in data]
@@ -31,13 +30,11 @@ class Classifier:
 		for i,offer in enumerate(data_read):
 			data_read[i] = offer.lower()
 		return data_read
-	#split dataset into train and test
-	def split_dataset(self,test_proportion=0.2):
+	def splidata_pset(self,test_proportion=0.2):
 		data = self.count_vect.fit_transform(self.data_p)
 		data = self.tf_transformer.fit_transform(data)
 		data_train, data_test = train_test_split(data,test_size=test_proportion)
 		return data,data_train,data_test
-	#pre process the data, this means classifying likely instances based on the occurance of some words
 	def process_dataset(self):
 		positive = []
 		positive_ex = []
@@ -73,7 +70,6 @@ class Classifier:
 		remove = positive + negative
 		data = np.delete(data,remove)
 		return data,positive_ex,negative_ex
-	#KMeans, it can either pick the best k or use k=2
 	def clf_KMeans(self,best_k=False,threshold=100):
 		if best_k:
 			score_anterior = KMeans(n_clusters=2).fit(self.data_train).score(self.data_test)
@@ -91,7 +87,6 @@ class Classifier:
 			nb_k = 2
 		clf = KMeans(n_clusters=nb_k).fit(self.data_t)
 		return clf
-	#Convert classes from K Means to "smartphone" or "not smartphone"
 	def convert_prediction(self):
 		try:
 			index = self.data_p.tolist().index(self.known_positive)
@@ -105,7 +100,6 @@ class Classifier:
 			else:
 				new_prediction.append("not_smartphone")
 		return new_prediction
-	#Extract prediction
 	def write_prediction(self,save_name,pre_process):
 		with open(save_name, 'w') as f:
 			for i,item in enumerate(self.prediction):
