@@ -1,8 +1,8 @@
+import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.cluster import KMeans
-import numpy as np
 
 class Classifier:
 	def __init__(self, save_name='post_indentifier.tsv',file_name='data_estag_ds.tsv',pre_process=True):
