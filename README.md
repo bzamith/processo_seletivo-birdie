@@ -40,7 +40,7 @@ Por fim, é preciso definir o "k" (número de clusters). Podemos fazer isso de d
 
 As duas opções foram implementadas, mas a primeira obteve melhores resultados que a segunda e por isso fiz uso dela.
 
-A saída de predição do KMeans se dá em classes "0" ou "1" etc com base no cluster em que as instâncias caíram. Para decidir qual classe é a de smartphones, peguei uma instância que eu sabia que tratava-se de um smartphone, devido justamente à ocorrência da palavra "smartphone". Se essa instância conhecida caiu no cluster 1, por exemplo, então esse é o cluster da classe "smartphone". Isso também pode gerar insconsistências. Se essa instãncia conhecida for rotulada erroneamente pelo classificador, então o resultado estará todo invertido. Isso só poderia ser resolvido se estivemos lidando com Aprendizado Semi-supervisionado.
+A saída de predição do KMeans se dá em classes "0" ou "1" etc com base no cluster em que as instâncias caíram. Para decidir qual classe é a de smartphones, peguei uma instância que eu sabia que tratava-se de um smartphone, devido justamente à ocorrência da palavra "smartphone". Se essa instância conhecida caiu no cluster 1, por exemplo, então esse é o cluster da classe "smartphone". Isso também pode gerar insconsistências. Se essa instãncia conhecida for rotulada erroneamente pelo classificador, então o resultado estará todo invertido. Isso só poderia ser evitado se estivéssemos lidando com Aprendizado Semi-supervisionado.
 
 Os resultados gerados pelo classificador são combinados com os resultados pré-processados e extraídos para um arquivo tsv.
 
