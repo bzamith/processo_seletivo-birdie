@@ -60,7 +60,6 @@ class Classifier:
 							negative_ex.append(offer)
 							break
 		remove = positive + negative
-		print("Removi: "+str(len(remove)))
 		data = np.delete(data,remove)
 		return data,positive_ex,negative_ex
 	#KMeans, it can either pick the best k or use k=2
