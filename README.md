@@ -55,3 +55,5 @@ Os resultados gerados pelo classificador são combinados com os resultados pré-
 ### Nota
 
 Do meu entendimento, por tratar-se de um algoritmo de clustering, o nome "classificador" talvez seja uma maneira não ideal de referir-se à solução. Todavia, como o resultado é tratado como classes ("smartphone" e "não smartphone"), assumi que não haveria problema em tratar a solução como um "classificador". 
+
+A solução deve ser melhorada, visto que ainda há uma taxa de erros que poderia ser diminuída. Para tanto, uma ideia seria rotular manualmente 75% do conjunto de dados fornecido, treinar um classificador seguindo um Aprendizado Supervisionado (decision tree, jrip, knn, rna, etc) e testar nos outros 25% para avaliar a performance do classificador. Assim, com novas instâncias deconhecidas teríamos um classificador mais robusto.
