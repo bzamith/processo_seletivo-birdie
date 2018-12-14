@@ -46,30 +46,21 @@ class Classifier:
 		negative = []
 		negative_ex = []
 		data = self.data_p
+		negative_keywords = {'capa', 'tablet', 'pelicula', 'película', 'bumper', 'bumber',
+                             'bracadeira', 'carregador'}
 		for i,offer in enumerate(data):
 			if offer != self.known_positive:
 				if 'smartphone' in offer:
-					positive.append(i)
-					positive_ex.append(offer)
-				elif 'capa' in offer:
-					negative.append(i)
-					negative_ex.append(offer)
-				elif 'tablet' in offer:
-					negative.append(i)
-					negative_ex.append(offer)
-				elif 'pelicula' in offer or 'película' in offer:
-					negative.append(i)
-					negative_ex.append(offer)
-				elif 'bumper' in offer or 'bumber' in offer:
-					negative.append(i)
-					negative_ex.append(offer)
-				elif 'bracadeira' in offer:
-					negative.append(i)
-					negative_ex.append(offer)
-				elif 'carregador' in offer:
-					negative.append(i)
-					negative_ex.append(offer)
+						positive.append(i)
+						positive_ex.append(offer)
+				else:
+					for offer_tok in negative_keywords:
+						if offer_tok in offer:
+							negative.append(i)
+							negative_ex.append(offer)
+							break
 		remove = positive + negative
+		print("Removi: "+str(len(remove)))
 		data = np.delete(data,remove)
 		return data,positive_ex,negative_ex
 	#KMeans, it can either pick the best k or use k=2
@@ -111,12 +102,12 @@ class Classifier:
 	def write_prediction(self,save_name,pre_process):
 		with open(save_name, 'w') as f:
 			for i,item in enumerate(self.prediction):
-				f.write(self.data_p[i]+"\t")
-				f.write(item+"\n")
+				f.write(self.data_p[i] + "\t" + item + "\n")
 			if pre_process:
 				for item in self.positive_ex:
 					f.write(item+"\tsmartphone\n")
 				for item in self.negative_ex:
 					f.write(item+"\tnot_smartphone\n")
 
-teste = Classifier()
+if __name__ == '__main__':
+	teste = Classifier()
