@@ -21,7 +21,7 @@ Publique o código para geração do classificador e a lista de categorias predi
 * Python 3 (_não compatível com versões anteriores_)
 * KMeans (clustering) com k = 2 (_também é permitida a decisão pelo melhor k de maneira automatizada_)
 * Pré-processamento dos dados (_também é permitida a execução sem o pré-processamento_)
-* Atributos criados com base no bag of words 
+* Atributos criados com base no modelo [Bag of Words](https://en.wikipedia.org/wiki/Bag-of-words_model) 
 
 ## Execução
 No diretório onde se encontra o arquivo [data_estag_ds.tsv](https://github.com/bzamith/processo_seletivo-birdie/blob/master/data_estag_ds.tsv), executar:
