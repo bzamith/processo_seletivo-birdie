@@ -2,6 +2,14 @@
 
 Minha solução para o problema proposto no Processo Seletivo da Birdie, Estágio Data Scientist, 2018
 
+## Task
+Usando as técnicas que lhe forem mais familiares e amigáveis (linguagem, frameworks, algoritmos), faça um classificador de títulos de ofertas de e-commerces para diferenciar entre smartphone / não-smartphone para o conjunto de títulos que pode ser baixado no nesse [link](https://github.com/bzamith/processo_seletivo-birdie/blob/master/data_estag_ds.tsv)
+
+A partir do classificador, gere um arquivo de resposta onde para cada título é indicado a categoria (smartphone / não-smartphone) predita pelo classificador.
+
+Publique o código para geração do classificador e a lista de categorias preditas em um repositório github/bitbucket/gitlab e nos envie o link.
+
+
 ## Suposições
 * Aprendizado não supervisionado
 * NLP (Natural Language Processing)
